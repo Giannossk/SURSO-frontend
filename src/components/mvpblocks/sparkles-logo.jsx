@@ -1,58 +1,50 @@
+import React from "react";
 import { SparklesCore } from "../ui/sparkles";
-import aws from "../../assets/logos/aws.png";
-import codingblocks from "../../assets/logos/codingblocks.png";
-import codingninja from "../../assets/logos/codingninja.png";
-import d4 from "../../assets/logos/d4.jpg";
-import encrypted from "../../assets/logos/encrypted.jpg";
-import gdg from "../../assets/logos/gdg.jpg";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  FaYoutube,
+  FaTiktok,
+} from "react-icons/fa6";
+
+const socialLinks = [
+  { icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com/surso_uoa/" },
+  { icon: FaFacebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=100092672904737" },
+  { icon: FaLinkedin, label: "LinkedIn", href: "https://gr.linkedin.com/in/surgical-society-nkua-b815322a6" },
+  { icon: FaYoutube, label: "YouTube", href: "https://www.youtube.com/@surgicalsocietynkua" },
+  { icon: FaTiktok, label: "TikTok", href: "https://www.tiktok.com/@surso_nkua" },
+];
 
 export default function SparklesLogo() {
   return (
-    <div className="w-full overflow-hidden bg-white pt-32 pb-16">
+    <div className="w-full overflow-hidden bg-background pt-32 pb-16">
       <div className="relative z-20 mx-auto w-full max-w-4xl px-4">
-        <div className="text-center text-4xl md:text-5xl font-bold text-black">
-          <span className="text-rose-600">Trusted by experts.</span>
+        <div className="text-center text-4xl md:text-5xl font-bold text-foreground">
+          <span className="text-rose-600">Follow @surso_uoa.</span>
           <br className="md:hidden" />
-          <span className="md:ml-3">Used by the leaders.</span>
+          <span className="md:ml-3">Join the community.</span>
           <br />
           <br />
         </div>
 
-        <div className="mt-14 grid grid-cols-3 gap-8 md:grid-cols-6 items-center opacity-100">
-          <img
-            src={aws}
-            alt="AWS"
-            className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all"
-          />
-          <img
-            src={codingblocks}
-            alt="Coding Blocks"
-            className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all"
-          />
-          <img
-            src={codingninja}
-            alt="Coding Ninja"
-            className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all"
-          />
-          <img
-            src={d4}
-            alt="D4"
-            className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all"
-          />
-          <img
-            src={encrypted}
-            alt="Encrypted"
-            className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all"
-          />
-          <img
-            src={gdg}
-            alt="GDG"
-            className="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all"
-          />
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
+          {socialLinks.map(({ icon, label, href }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="flex h-14 w-14 items-center justify-center rounded-full border border-border/50 text-foreground/70 transition-all hover:-rotate-12 hover:scale-110 hover:border-primary hover:text-primary"
+            >
+              {React.createElement(icon, { className: "h-6 w-6" })}
+            </a>
+          ))}
         </div>
       </div>
 
-      <div className="relative z-10 -mt-40 h-[32rem] md:h-[40rem] w-full overflow-hidden [mask-image:radial-gradient(circle,white,transparent)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom,#e60a64,transparent_70%)] before:opacity-40 after:absolute after:top-1/2 after:-left-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[100%] after:border-t after:border-[#c5769066] after:bg-white">
+      <div className="relative z-10 -mt-40 h-[32rem] md:h-[40rem] w-full overflow-hidden [mask-image:radial-gradient(circle,white,transparent)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom,#e60a64,transparent_70%)] before:opacity-40 after:absolute after:top-1/2 after:-left-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[100%] after:border-t after:border-[#c5769066] after:bg-background">
         <SparklesCore
           id="tsparticles"
           background="transparent"

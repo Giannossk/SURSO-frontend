@@ -1,63 +1,45 @@
 import {
-  Building2,
-  Lightbulb,
-  ScreenShare,
-  Trophy,
-  User,
-  User2,
+  Microscope,
+  Mic2,
+  Stethoscope,
+  Presentation,
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 // Create feature data arrays for left and right columns
 const leftFeatures = [
   {
-    icon: Building2,
-    title: "Taught by Professionals",
+    icon: Microscope,
+    title: "Journal Club",
     description:
-      "Learn directly from top engineers and founders with real-world experience.",
+      "Our recurring discussion group where we dig into current surgical research together.",
     position: "left",
     cornerStyle: "sm:translate-x-4 sm:rounded-br-[2px]",
   },
   {
-    icon: User2,
-    title: "Coding Hostels",
+    icon: Mic2,
+    title: "Meet the Experts",
     description:
-      "Join virtual hostels to study, collaborate, and vibe with fellow learners.",
+      "An ongoing interview and panel series with real surgical professionals — now in its 7th volume.",
     position: "left",
-    cornerStyle: "sm:-translate-x-4 sm:rounded-br-[2px]",
-  },
-  {
-    icon: Trophy,
-    title: "Bounties",
-    description:
-      "Win rewards for solving challenges, contributing to projects, and helping peers.",
-    position: "left",
-    cornerStyle: "sm:translate-x-4 sm:rounded-tr-[2px]",
+    cornerStyle: "sm:-translate-x-4 sm:rounded-tr-[2px]",
   },
 ];
 const rightFeatures = [
   {
-    icon: ScreenShare,
-    title: "Revision Classes",
+    icon: Stethoscope,
+    title: "Ready, Set, Scrub In",
     description:
-      "Stay sharp with weekly revision sessions and topic refreshers.",
+      "A hands-on workshop where you practice real surgical skills in a guided, beginner-friendly setting.",
     position: "right",
     cornerStyle: "sm:-translate-x-4 sm:rounded-bl-[2px]",
   },
   {
-    icon: User,
-    title: "Peer Code Reviews",
+    icon: Presentation,
+    title: "Workshops & Talks",
     description:
-      "Improve faster with feedback from mentors and batchmates on your actual code.",
+      "Regular sessions and talks that bring you closer to the surgical specialties.",
     position: "right",
-    cornerStyle: "sm:translate-x-4 sm:rounded-bl-[2px]",
-  },
-  {
-    icon: Lightbulb,
-    title: "Leet Lab",
-    description:
-      "Ace coding interviews with daily DSA problems, contests, and tracking.",
-    position: "right",
-    cornerStyle: "sm:-translate-x-4 sm:rounded-tl-[2px]",
+    cornerStyle: "sm:translate-x-4 sm:rounded-tl-[2px]",
   },
 ];
 // Feature card component
@@ -101,17 +83,17 @@ export default function Feature3() {
           <div className="order-[1] mb-6 self-center sm:order-[0] md:mb-0">
             <div className="bg-secondary text-foreground ring-border relative mx-auto mb-4.5 w-fit rounded-full rounded-bl-[2px] px-4 py-2 text-sm ring">
               <span className="relative z-1 flex items-center gap-2">
-                Features
+                Programs
               </span>
               <span className="from-primary/0 via-primary to-primary/0 absolute -bottom-px left-1/2 h-px w-2/5 -translate-x-1/2 bg-gradient-to-r"></span>
               <span className="absolute inset-0 bg-[radial-gradient(30%_40%_at_50%_100%,hsl(var(--primary)/0.25)_0%,transparent_100%)]"></span>
             </div>
             <h2 className="text-foreground mb-2 text-center text-2xl sm:mb-2.5 md:text-[2rem]">
-              Key Benefits of Cohorts
+              Our Programs
             </h2>
             <p className="text-muted-foreground mx-auto max-w-[18rem] text-center text-pretty">
-              Cohorts are best way to learn because you finish the course in a
-              timely manner
+              The recurring activities that bring SURSO&apos;s community
+              together.
             </p>
           </div>
 

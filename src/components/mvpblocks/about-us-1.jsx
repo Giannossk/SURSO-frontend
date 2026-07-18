@@ -5,11 +5,10 @@ import { Spotlight } from "../../components/ui/spotlight";
 import { BorderBeam } from "../../components/ui/border-beam";
 import { CardHoverEffect } from "../ui/pulse-card";
 import {
-  Globe,
   Users,
   Heart,
-  Lightbulb,
-  Sparkles,
+  Microscope,
+  Stethoscope,
   Rocket,
   Target,
 } from "lucide-react";
@@ -17,49 +16,46 @@ import {
 const iconComponents = {
   Users: Users,
   Heart: Heart,
-  Lightbulb: Lightbulb,
-  Globe: Globe,
-  Sparkles: Sparkles,
-  Rocket: Rocket,
-  Target: Target,
+  Microscope: Microscope,
+  Stethoscope: Stethoscope,
 };
 
 const defaultValues = [
   {
-    title: "Innovation",
+    title: "Curiosity",
     description:
-      "We constantly push boundaries and explore new possibilities to create cutting-edge solutions.",
-    icon: "Lightbulb",
+      "We dig into real surgical research together in Journal Club, asking questions before we have all the answers.",
+    icon: "Microscope",
   },
   {
-    title: "Collaboration",
+    title: "Hands-On Learning",
     description:
-      "We believe in the power of teamwork and diverse perspectives to achieve extraordinary results.",
+      "From Ready, Set, Scrub In to our regular workshops, we believe surgical skill starts with doing, not just reading.",
+    icon: "Stethoscope",
+  },
+  {
+    title: "Mentorship",
+    description:
+      "Meet the Experts connects us directly with surgical professionals who've walked the path we're on.",
     icon: "Users",
   },
   {
-    title: "Excellence",
+    title: "Community",
     description:
-      "We strive for perfection in everything we do, consistently delivering high-quality work.",
-    icon: "Sparkles",
-  },
-  {
-    title: "Impact",
-    description:
-      "We measure our success by the positive difference we make in people's lives and businesses.",
-    icon: "Globe",
+      "SURSO is a space for NKUA students who share one thing: a passion for surgery.",
+    icon: "Heart",
   },
 ];
 
 export default function AboutUs1() {
   const aboutData = {
-    title: "About Us",
+    title: "About SURSO",
     subtitle:
-      "Building the future of web development with beautiful, reusable components.",
+      "The first student surgical team at NKUA — exploring the art of surgery, together.",
     mission:
-      "Our mission is to democratize web development by providing high-quality, customizable components that help developers build stunning websites quickly and efficiently.",
+      "SURSO NKUA brings together National and Kapodistrian University of Athens medical students who share a passion for the surgical specialties. Our mission is to help students explore the art of surgery through group activities, hands-on workshops, and direct interaction with professionals in the field — from Journal Club discussions to our Meet the Experts interview series.",
     vision:
-      "We envision a world where creating beautiful websites is accessible to everyone, regardless of their design or development experience.",
+      "Inspiring future surgeons. We want every student with a curiosity about surgery to find a community, mentors, and real hands-on experience — long before they have to choose a specialty.",
     values: defaultValues,
     className: "relative overflow-hidden py-20",
   };

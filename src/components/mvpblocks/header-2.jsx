@@ -5,27 +5,21 @@ import {
   Menu,
   X,
   ArrowRight,
-  Zap,
-  Search,
-  User,
-  LogOut,
-  LayoutDashboard,
-  ChevronDown,
+  Stethoscope,
   Moon,
   Sun,
 } from "lucide-react";
-import { useAuth } from "../../context/AuthContext";
 import { useTheme } from "../../context/ThemeContext";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import NotificationBell from "../ui/NotificationBell";
+import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
   { name: "Home", href: "/" },
   { name: "Features", href: "/features" },
-  { name: "Pricing", href: "/pricing" },
   { name: "About", href: "/about-us" },
   { name: "Contact", href: "/contact" },
 ];
+
+const JOIN_FORM_URL = "https://forms.gle/zos4xc43eN3mbcSw6";
 
 function isNavActive(pathname, hash, href) {
   if (href === "/") {
@@ -41,25 +35,9 @@ export default function Header2() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
-  const navigate = useNavigate();
   const location = useLocation();
   const isDark = theme === "dark";
-
-  const getDashboardLink = () => {
-    if (!user) return "/";
-
-    switch (user.role) {
-      case "admin":
-        return "/admin/dashboard";
-      case "organizer":
-        return "/organizer/dashboard";
-      default:
-        return "/customer/dashboard";
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -141,16 +119,13 @@ export default function Header2() {
               <Link to="/" className="flex items-center space-x-3">
                 <div className="relative">
                   <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 shadow-lg shadow-indigo-500/20">
-                    <Zap className="h-5 w-5 text-white" />
+                    <Stethoscope className="h-5 w-5 text-white" />
                   </div>
                   <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full border-2 border-background bg-emerald-400" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-foreground text-xl font-extrabold tracking-tight">
-                    Event
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
-                      .One
-                    </span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500 text-xl font-extrabold tracking-tight">
+                    SURSO
                   </span>
                 </div>
               </Link>
@@ -246,121 +221,17 @@ export default function Header2() {
                 )}
               </motion.button>
 
-              <motion.button
-                className="text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg p-2 transition-colors duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <motion.a
+                href={JOIN_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-foreground text-background hover:bg-foreground/90 inline-flex items-center space-x-2 rounded-lg px-5 py-2.5 text-sm font-medium shadow-sm transition-all duration-200"
               >
-                <Search className="h-5 w-5" />
-              </motion.button>
-
-              {user ? (
-                <div className="flex items-center space-x-3">
-                  <NotificationBell />
-                  <div className="relative">
-                  <motion.button
-                    className="flex items-center space-x-2 text-foreground/80 hover:text-foreground px-4 py-2 text-sm font-medium transition-colors duration-200 bg-muted/30 hover:bg-muted/50 rounded-full"
-                    onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center border border-indigo-200 overflow-hidden">
-                      {user.avatarUrl ? (
-                        <img
-                          src={user.avatarUrl}
-                          alt="Profile"
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        <User className="h-4 w-4 text-indigo-600" />
-                      )}
-                    </div>
-                    <span>Account</span>
-                    <ChevronDown
-                      className={`h-4 w-4 transition-transform duration-200 ${
-                        isProfileMenuOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </motion.button>
-
-                  <AnimatePresence>
-                    {isProfileMenuOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute -right-12 mt-2 w-56 rounded-xl border border-border/50 bg-background/95 shadow-xl overflow-hidden z-50 backdrop-blur"
-                      >
-                        <div className="p-2 space-y-1">
-                          <div className="px-3 py-2 border-b border-border/50 mb-1">
-                            <p className="text-sm font-semibold text-foreground truncate">
-                              {user.name || "User"}
-                            </p>
-                            <p className="text-xs text-muted-foreground truncate">
-                              {user.email}
-                            </p>
-                          </div>
-
-                          <Link
-                            to="/profile"
-                            onClick={() => setIsProfileMenuOpen(false)}
-                            className="flex items-center space-x-2 w-full px-3 py-2 text-sm text-foreground/80 hover:bg-muted hover:text-foreground rounded-lg transition-colors"
-                          >
-                            <User className="h-4 w-4" />
-                            <span>Profile</span>
-                          </Link>
-
-                          <Link
-                            to={getDashboardLink()}
-                            onClick={() => setIsProfileMenuOpen(false)}
-                            className="flex items-center space-x-2 w-full px-3 py-2 text-sm text-foreground/80 hover:bg-muted hover:text-foreground rounded-lg transition-colors"
-                          >
-                            <LayoutDashboard className="h-4 w-4" />
-                            <span>Dashboard</span>
-                          </Link>
-
-                          <div className="border-t border-border/50 my-1" />
-
-                          <button
-                            onClick={() => {
-                              setIsProfileMenuOpen(false);
-                              logout(navigate);
-                            }}
-                            className="flex items-center space-x-2 w-full px-3 py-2 text-sm text-red-500 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
-                          >
-                            <LogOut className="h-4 w-4" />
-                            <span>Logout</span>
-                          </button>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-                </div>
-              ) : (
-                <>
-                  <Link
-                    to="/login"
-                    className="text-foreground/80 hover:text-foreground px-4 py-2 text-sm font-medium transition-colors duration-200"
-                  >
-                    Sign In
-                  </Link>
-
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Link
-                      to="/signup"
-                      className="bg-foreground text-background hover:bg-foreground/90 inline-flex items-center space-x-2 rounded-lg px-5 py-2.5 text-sm font-medium shadow-sm transition-all duration-200"
-                    >
-                      <span>Get Started</span>
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </motion.div>
-                </>
-              )}
+                <span>Join SURSO</span>
+                <ArrowRight className="h-4 w-4" />
+              </motion.a>
             </motion.div>
 
             <motion.button
@@ -442,61 +313,15 @@ export default function Header2() {
                   className="border-border space-y-3 border-t pt-6"
                   variants={mobileItemVariants}
                 >
-                  {user ? (
-                    <div className="space-y-1">
-                      <div className="px-4 py-2 mb-2">
-                        <p className="text-sm font-semibold text-foreground">
-                          {user.name || "User"}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          {user.email}
-                        </p>
-                      </div>
-                      <Link
-                        to="/profile"
-                        className="flex items-center space-x-2 w-full px-4 py-3 text-sm text-foreground hover:bg-muted rounded-lg font-medium transition-colors duration-200"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        <User className="h-4 w-4" />
-                        <span>Profile</span>
-                      </Link>
-                      <Link
-                        to={getDashboardLink()}
-                        className="flex items-center space-x-2 w-full px-4 py-3 text-sm text-foreground hover:bg-muted rounded-lg font-medium transition-colors duration-200"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        <LayoutDashboard className="h-4 w-4" />
-                        <span>Dashboard</span>
-                      </Link>
-                      <button
-                        onClick={() => {
-                          setIsMobileMenuOpen(false);
-                          logout(navigate);
-                        }}
-                        className="flex items-center space-x-2 w-full px-4 py-3 text-sm text-red-500 hover:bg-red-50 rounded-lg font-medium transition-colors duration-200"
-                      >
-                        <LogOut className="h-4 w-4" />
-                        <span>Logout</span>
-                      </button>
-                    </div>
-                  ) : (
-                    <>
-                      <Link
-                        to="/login"
-                        className="text-foreground hover:bg-muted block w-full rounded-lg py-3 text-center font-medium transition-colors duration-200"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        Sign In
-                      </Link>
-                      <Link
-                        to="/signup"
-                        className="bg-foreground text-background hover:bg-foreground/90 block w-full rounded-lg py-3 text-center font-medium transition-all duration-200"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        Get Started
-                      </Link>
-                    </>
-                  )}
+                  <a
+                    href={JOIN_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-foreground text-background hover:bg-foreground/90 block w-full rounded-lg py-3 text-center font-medium transition-all duration-200"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Join SURSO
+                  </a>
                 </motion.div>
               </div>
             </motion.div>

@@ -9,11 +9,11 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'Mvpblocks.webp'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'surso-icon.png', 'surso-mark.svg'],
       manifest: {
-        name: 'SURSO Platform',
+        name: 'SURSO NKUA',
         short_name: 'SURSO',
-        description: 'Open-source full-stack event management platform',
+        description: 'Surgical Society of Medical Students at the National and Kapodistrian University of Athens',
         theme_color: '#000000',
         background_color: '#ffffff',
         display: 'standalone',

@@ -1,44 +1,29 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, isValidElement, cloneElement } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../../lib/utils";
-import { Rocket, Code, Paintbrush } from "lucide-react";
+import { CalendarClock, Users, ClipboardCheck } from "lucide-react";
 const features = [
   {
     step: "Step 1",
-    title: "Create & Plan",
+    title: "Plan & Organize",
     content:
-      "Set up events with dates, venues, registrations, and schedules all from a single dashboard. No chaos, just clarity.",
-    icon: <Rocket className="text-primary h-6 w-6" />,
-    image:
-      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop",
+      "Our team lines up dates, speakers, and venues for Journal Club, Meet the Experts, and workshops well ahead of time.",
+    icon: <CalendarClock className="text-primary h-6 w-6" />,
   },
   {
     step: "Step 2",
-    title: "Collaborate & Manage",
+    title: "Coordinate the Team",
     content:
-      "Assign roles, coordinate volunteers, and collaborate in real time. Everyone knows their task, every time.",
-    icon: <Paintbrush className="text-primary h-6 w-6" />,
-    image:
-      "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=2070&auto=format&fit=crop",
+      "Roles are assigned across our organizers so everyone knows what they own, from logistics to hosting.",
+    icon: <Users className="text-primary h-6 w-6" />,
   },
   {
     step: "Step 3",
-    title: "Launch & Track",
+    title: "Run & Follow Up",
     content:
-      "Go live with confidence. Track registrations, engagement, and attendance and auto-generate certificates once it’s done.",
-    icon: <Code className="text-primary h-6 w-6" />,
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    step: "Step 4",
-    title: "Tech Giants",
-    content:
-      "Trusted by communities like GDG Jalandhar, AWS Cloud Clubs, Coding Ninjas — 5+ successful events and counting",
-    icon: <Code className="text-primary h-6 w-6" />,
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+      "We check members in, run the activity, and follow up so nothing falls through the cracks.",
+    icon: <ClipboardCheck className="text-primary h-6 w-6" />,
   },
 ];
 export default function FeatureSteps() {
@@ -61,11 +46,11 @@ export default function FeatureSteps() {
         <div className="relative mx-auto mb-12 max-w-2xl sm:text-center">
           <div className="relative z-10">
             <h2 className="font-geist text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl">
-              Scale Your Events in Three Steps
+              How We Run Our Activities
             </h2>
             <p className="text-foreground font-geist text-3xl font-bold tracking-tighter md:text-4xl lg:text-5xl">
-              SURSO helps you create, customize, and deploy your Events
-              faster than ever before.
+              From planning to follow-up, here&apos;s how SURSO&apos;s team brings
+              it all to life.
             </p>
           </div>
           <div
@@ -114,7 +99,7 @@ export default function FeatureSteps() {
 
           <div
             className={cn(
-              "border-primary/20 relative order-1 h-[200px] overflow-hidden rounded-xl border [box-shadow:0_5px_30px_-15px_rgba(192,15,102,0.3)] md:order-2 md:h-[300px] lg:h-[400px]",
+              "border-primary/20 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-transparent relative order-1 h-[200px] overflow-hidden rounded-xl border [box-shadow:0_5px_30px_-15px_rgba(192,15,102,0.3)] md:order-2 md:h-[300px] lg:h-[400px]",
             )}>
             <AnimatePresence mode="wait">
               {features.map(
@@ -122,19 +107,17 @@ export default function FeatureSteps() {
                   index === currentFeature && (
                     <motion.div
                       key={index}
-                      className="absolute inset-0 overflow-hidden rounded-lg"
-                      initial={{ y: 100, opacity: 0, rotateX: -20 }}
-                      animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                      exit={{ y: -100, opacity: 0, rotateX: 20 }}
+                      className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-lg"
+                      initial={{ opacity: 0, scale: 0.85 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.85 }}
                       transition={{ duration: 0.5, ease: "easeInOut" }}>
-                      <img
-                        src={feature.image}
-                        alt={feature.title}
-                        className="h-full w-full transform object-cover transition-transform hover:scale-105"
-                        width={1000}
-                        height={500}
-                      />
-                      <div className="from-background via-background/50 absolute right-0 bottom-0 left-0 h-2/3 bg-gradient-to-t to-transparent" />
+                      <div className="flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-to-tr from-indigo-500 to-purple-500 shadow-lg shadow-indigo-500/20 md:h-32 md:w-32">
+                        {isValidElement(feature.icon) &&
+                          cloneElement(feature.icon, {
+                            className: "h-10 w-10 text-white md:h-14 md:w-14",
+                          })}
+                      </div>
 
                       <div className="bg-background/80 absolute bottom-4 left-4 rounded-lg p-2 backdrop-blur-sm">
                         <span className="text-primary text-xs font-medium">

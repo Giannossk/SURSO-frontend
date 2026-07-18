@@ -105,29 +105,29 @@ export default function Faq3() {
   const navigate = useNavigate();
   const faqs = [
     {
-  question: "What makes SURSO unique?",
+  question: "What is SURSO?",
   answer:
-    "SURSO is purpose-built for communities and organizations to host events end-to-end. From event creation and registrations to team roles, certificates, and analytics—everything is managed in one fast, simple, and intuitive platform.",
+    "SURSO NKUA is the Surgical Society of Medical Students at the National and Kapodistrian University of Athens — the first student surgical team bringing together students with a shared passion for the surgical specialties. We explore the art of surgery through group activities, workshops, and interactions with professionals in the field.",
 },
 {
-  question: "Who can use SURSO?",
+  question: "Who can join SURSO?",
   answer:
-    "SURSO is ideal for student communities, tech clubs, colleges, startups, and organizations. Whether you're hosting meetups, workshops, hackathons, or large-scale events, SURSO adapts to your needs.",
+    "SURSO is open to NKUA medical students who share a passion for the surgical specialties and want to get closer to the field through hands-on activities, talks, and mentorship from professionals.",
 },
 {
-  question: "What features does SURSO provide?",
+  question: "What activities does SURSO run?",
   answer:
-    "SURSO offers event creation, registrations, automated notifications, team and role management, certificate distribution, user profiles, and a powerful admin dashboard with real-time analytics.",
+    "Journal Club (surgical research discussions), Meet the Experts (our ongoing interview and panel series with surgical professionals, now at volume 7), Ready, Set, Scrub In (a hands-on skills workshop), and regular workshops and talks throughout the year.",
 },
 {
-  question: "How can I get started with SURSO?",
+  question: "How do I become a member?",
   answer:
-    "Getting started is simple—sign up, create your organization, and launch your first event in minutes. Our intuitive interface ensures you can manage everything without any technical complexity.",
+    "Fill out our membership registration form to join (linked from the \"Join SURSO\" button above). Follow us on Instagram (@surso_uoa) or our other social channels for announcements about upcoming activities and sign-up windows.",
 },
 {
-  question: "Is SURSO free to use?",
+  question: "Where can I follow SURSO?",
   answer:
-    "Yes! SURSO offers a free plan suitable for most communities. You can host events, manage participants, and distribute certificates without worrying about hidden costs.",
+    "Instagram, Facebook, LinkedIn, YouTube, and TikTok — links are in the footer below.",
 },
 
   ];
@@ -170,7 +170,7 @@ export default function Faq3() {
       "mt-3 text-2xl md:text-3xl font-bold",
       "text-foreground"
     )}>
-    We’ve Got Answers.
+    We&rsquo;ve Got Answers.
   </h3>
 
   <p
@@ -179,8 +179,8 @@ export default function Faq3() {
       "mx-auto mt-5 max-w-2xl",
       "text-base md:text-lg leading-relaxed"
     )}>
-    Learn everything about SURSO — from event management
-    and registrations to certificates, dashboards, and support.
+    Learn more about SURSO NKUA — who we are, what we do, and how to
+    get involved.
   </p>
 
   <div className="bg-primary/20 mx-auto mt-8 h-1 w-24 rounded-full" />

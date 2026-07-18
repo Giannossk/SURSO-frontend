@@ -6,34 +6,35 @@ import { LegalModal } from "../ui/legal-modal";
 import { legalContent } from "../../data/legalContent";
 import toast from "react-hot-toast";
 
+import { Stethoscope } from "lucide-react";
 import {
-  Github,
-  Linkedin,
-  Twitter,
-  MessageCircle,
-  Zap,
-  Heart,
-} from "lucide-react";
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  FaYoutube,
+  FaTiktok,
+} from "react-icons/fa6";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 const data = () => ({
   navigation: {
-    product: [
-      { name: "Features", href: "#features" },
-      { name: "Pricing", href: "#pricing" },
+    explore: [
+      { name: "Home", href: "/" },
+      { name: "Features", href: "/features" },
     ],
 
     company: [
-      { name: "About", href: "/about" },
+      { name: "About", href: "/about-us" },
       { name: "Contact", href: "/contact" },
+      { name: "Support", href: "/support" },
     ],
 
-    resources: [
-      { name: "Documentation", href: "#" },
-      { name: "API Reference", href: "#" },
-      // { name: "Community", href: "/community" },
-      // { name: "Status", href: "/status" },
+    programs: [
+      { name: "Journal Club", href: "/features" },
+      { name: "Meet the Experts", href: "/features" },
+      { name: "Ready, Set, Scrub In", href: "/features" },
+      { name: "Workshops & Talks", href: "/features" },
     ],
 
     legal: [
@@ -43,10 +44,11 @@ const data = () => ({
   },
 
   socialLinks: [
-    { icon: Twitter, label: "Twitter", href: "#" },
-    { icon: Github, label: "GitHub", href: "#" },
-    { icon: MessageCircle, label: "Discord", href: "#" },
-    { icon: Linkedin, label: "LinkedIn", href: "#" },
+    { icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com/surso_uoa/" },
+    { icon: FaFacebook, label: "Facebook", href: "https://www.facebook.com/profile.php?id=100092672904737" },
+    { icon: FaLinkedin, label: "LinkedIn", href: "https://gr.linkedin.com/in/surgical-society-nkua-b815322a6" },
+    { icon: FaYoutube, label: "YouTube", href: "https://www.youtube.com/@surgicalsocietynkua" },
+    { icon: FaTiktok, label: "TikTok", href: "https://www.tiktok.com/@surso_nkua" },
   ],
 
   bottomLinks: [
@@ -54,6 +56,13 @@ const data = () => ({
     { href: "/terms", label: "Terms of Service" },
   ],
 });
+
+const sectionTitles = {
+  explore: "Explore",
+  company: "Company",
+  programs: "Programs",
+  legal: "Legal",
+};
 
 export default function FooterStandard() {
   const currentYear = new Date().getFullYear();
@@ -97,7 +106,7 @@ export default function FooterStandard() {
             <a href="/" className="inline-flex items-center gap-3">
               <div className="relative">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 via-rose-600 to-rose-700 shadow-lg">
-                  <Zap className="h-5 w-5 text-white" />
+                  <Stethoscope className="h-5 w-5 text-white" />
                 </div>
 
                 <div className="absolute -top-1 -right-1 h-3 w-3 animate-pulse rounded-full bg-green-400"></div>
@@ -109,8 +118,9 @@ export default function FooterStandard() {
             </a>
 
             <p className="text-muted-foreground max-w-md">
-              Building innovative solutions for modern businesses.
-              Fast, reliable, and scalable.
+              SURSO is the Surgical Society of Medical Students at the National and
+              Kapodistrian University of Athens — inspiring future surgeons through
+              workshops, talks, and hands-on experience with the surgical specialties.
             </p>
 
             {/* Social Icons */}
@@ -124,7 +134,7 @@ export default function FooterStandard() {
                       asChild
                       className="hover:bg-primary dark:hover:bg-primary !border-primary/30 cursor-pointer shadow-none transition-all duration-500 hover:scale-110 hover:-rotate-12 hover:text-white hover:shadow-md"
                     >
-                      <a href={href}>
+                      <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
                         {React.createElement(icon, { className: "h-4 w-4" })}
                       </a>
                     </Button>
@@ -164,24 +174,21 @@ export default function FooterStandard() {
               </div>
 
               <p className="text-muted-foreground text-xs">
-                Get the latest updates, tutorials, and exclusive offers.
+                Get updates on Journal Club, Meet the Experts, workshops, and more.
               </p>
             </form>
 
             <h1 className="from-muted-foreground/15 bg-gradient-to-b bg-clip-text text-5xl font-extrabold text-transparent lg:text-7xl">
-              Developer
+              SURSO
             </h1>
           </div>
 
           {/* Navigation */}
           <div className="grid w-full grid-cols-2 items-start justify-between gap-8 px-5 lg:col-span-3">
-            {["product", "company", "resources", "legal"].map((section) => (
+            {["explore", "company", "programs", "legal"].map((section) => (
               <div key={section} className="space-y-3">
                 <h4 className="text-xs font-semibold text-slate-900 uppercase tracking-wide">
-                  {section === "product" && "Product"}
-                  {section === "company" && "Company"}
-                  {section === "resources" && "Resources"}
-                  {section === "legal" && "Legal"}
+                  {sectionTitles[section]}
                 </h4>
 
                 <ul className="space-y-2">

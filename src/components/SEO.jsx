@@ -15,7 +15,7 @@ const SEO = ({ title, description, ogImage, url = '' }) => {
   const fullUrl = siteUrl && path ? `${siteUrl}${path}` : siteUrl || path;
   
   // Build absolute image URL (prefer provided image, fallback to public image)
-  const absoluteOgImage = ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`) : `${siteUrl}/Mvpblocks.webp`;
+  const absoluteOgImage = ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`) : `${siteUrl}/surso-icon.png`;
   const appName = 'SURSO';
 
   return (

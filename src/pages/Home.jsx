@@ -2,21 +2,19 @@ import React from 'react';
 import SEO from '../components/SEO';
 import Hero from "../components/mvpblocks/gradient-hero";
 import Features from "../components/mvpblocks/feature-2";
-import TestimonialsCarousel from "../components/mvpblocks/testimonials-carousel";
 import FAQ from "../components/mvpblocks/faq-3";
 import Sparkles from "../components/mvpblocks/sparkles-logo";
 
 const Home = () => {
     return (
         <>
-            <SEO 
-                title="Discover & Manage Events"
-                description="SURSO - The ultimate platform to discover, create, and manage events. Connect with organizers, register for events, and stay updated on what's happening around you."
+            <SEO
+                title="SURSO NKUA — Surgical Society of Medical Students"
+                description="SURSO is the Surgical Society of Medical Students at the National and Kapodistrian University of Athens — inspiring future surgeons through Journal Club, Meet the Experts, workshops, and hands-on experience with the surgical specialties."
                 url="/"
             />
             <Hero />
             <Features />
-            <TestimonialsCarousel />
             <FAQ />
             <Sparkles />
         </>
