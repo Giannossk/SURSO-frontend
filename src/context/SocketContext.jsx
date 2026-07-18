@@ -24,6 +24,10 @@ export const SocketProvider = ({ children }) => {
         newSocket.emit('user:join', { userId: user._id || user.id });
       });
 
+      // Exposing the socket synchronously (not from a callback) is required here:
+      // consumers attach their own 'connect' listeners as soon as they receive the
+      // socket, and a delayed setSocket would make them miss an already-fired 'connect'.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSocket(newSocket);
     }
 

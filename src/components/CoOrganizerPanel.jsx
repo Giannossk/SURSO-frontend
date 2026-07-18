@@ -9,14 +9,13 @@ export default function CoOrganizerPanel({ eventId, isOwner }) {
   const [msg, setMsg] = useState({ text: '', ok: true });
   const token = localStorage.getItem('token');
 
-  const fetchCoOrgs = async () => {
-    try {
-      const res = await fetch(`${API_BASE_URL}/api/events/${eventId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const data = await res.json();
-      setCoOrgs(data.event?.coOrganizers || []);
-    } catch (_) {}
+  const fetchCoOrgs = () => {
+    fetch(`${API_BASE_URL}/api/events/${eventId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then((res) => res.json())
+      .then((data) => setCoOrgs(data.event?.coOrganizers || []))
+      .catch((err) => console.error('Failed to fetch co-organizers', err));
   };
 
   useEffect(() => { fetchCoOrgs(); }, [eventId]);

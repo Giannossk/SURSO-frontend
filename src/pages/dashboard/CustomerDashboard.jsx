@@ -27,6 +27,8 @@ const categoryColors = {
   Business: '#dc2626',
 };
 
+const CATEGORIES = Object.keys(categoryColors);
+
 const getEventDate = (registration) => {
   if (!registration?.event?.date) return null;
 
